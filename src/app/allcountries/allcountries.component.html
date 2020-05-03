@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row" *ngIf="allCountries.length>0">
+    <div class="col-md-4" *ngFor="let country of allCountries">
+      <!--All Countrycard starts here-->
+      <div class="card countryCard">
+        <img class="card-img-top" src="{{country.flag}}" alt="Card image cap" style="height:35%; width:100%;">
+        <div class="card-body">
+          <h5 class="card-title text-truncate">{{country.name}}</h5>
+          <p class="card-text text-truncate">Language:
+            <ng-container *ngFor='let language of country.languages; let first = first; let last = last;'>
+              <a *ngIf="language?.iso639_1"
+                [routerLink]="['/allcountries','lang',language?.iso639_1]">{{language.name}}{{last ? '' : ', '}}</a>
+            </ng-container>
+          </p>
+          <p class="card-text text-truncate">Currency:
+            <ng-container *ngFor='let currency of country.currencies; let first = first; let last = last'>
+              <a *ngIf="currency.code"
+                [routerLink]="['/allcountries','currency',currency.code]">{{currency.name}}{{last ? '' : ', '}}</a>
+            </ng-container>
+          </p>
+          <p class="card-text">Capital: {{country.capital}}</p>
+          <p class="card-text">Population: {{country.population}}</p>
+          <p class="card-text">TimeZones: {{country.timezones}}</p>
+          <p class="card-text">Area: {{country.area}}</p>
+          <ng-container *ngIf="country?.name">
+            <a [routerLink]="['/country-view',country?.name]" class="btn btn-outline-warning btn-lg"
+              style="margin-left:35%">Read</a>
+          </ng-container>
+        </div>
+      </div>
+
+      <!--All Country card ends here-->
+
+    </div>
+  </div>
+  <div class="row" *ngIf="allCountries.length <=0 ">
+    <div class="col-md-12 text-light d-flex justify-content-center">
+      No Records Found
+    </div>
+  </div>
+  <br><br><br>
+</div>

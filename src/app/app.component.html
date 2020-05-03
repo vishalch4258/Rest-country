@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<body>
+<meta charset="utf-8">
+<meta name="viewport" content ="width=device-width,initial-scale=1,user-scalable=yes" />
+  <div class="container-fluid heading">
+    <br><img class="logo" src="https://bestanimations.com/Earth&Space/Earth/earth-spinning-rotating-animation-24.gif"
+      alt='Planet Earth'>
+    <br>
+  </div>
+
+  <div class="slide-right" style="text-align: center;">
+    <p>Let's Start The Journey Of the world ....
+    </p>
+  </div>
+  <!--Search bar started-->
+  <div class="searchBar ">
+    <div class="d-flex">
+      <a [routerLink]="['/home']" class="btn btn-outline-warning btn-lg">Region</a>
+      <button type="button" class="btn btn-outline-warning btn-lg" (click)=goBackToPreviousLocation()>Go Back</button>
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="searchByCountry(f)" novalidate>
+      <div style="display: inline-block;">
+        <input id="male" type="radio" value="name" name="searchRadio" ngModel required>Country
+        <input id="female" type="radio" value="lang" name="searchRadio" ngModel required>Language
+        <input id="female" type="radio" value="currency" name="searchRadio" ngModel required>Currency
+        <input type="text" name='search' ngModel required>
+      </div>
+      <button class="btn btn-outline-warning text-warning" [disabled]="f.invalid">Search</button>
+
+    </form>
+
+
+
+  </div>
+
+
+
+  <router-outlet></router-outlet>
+
+  <!--Footer started here-->
+  <footer class="footer heading-font" style="text-align: center;">
+    Project@edWisor.com 2020<br>Design & Devoped by<br>Vishal Chatterjee <i class="fas fa-heartbeat"></i>
+  </footer>
+
+
+</body>
+
+</html>
